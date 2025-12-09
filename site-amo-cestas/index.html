@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amô | Cestas Personalizadas | Coleção de Natal</title>
+    <style>
+        :root {
+            --primary-red: #9f3230;
+            --primary-green: #2b543a;
+            --gold: #f1c40f;
+            --bg-color: #f9f9f9;
+            --text-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* Header (Título principal, mantido por estrutura, mas não aparece no layout) */
+        header {
+            background-color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            display: none; 
+        }
+
+        /* Hero Section (AGORA INTEGRA O LOGO E O NOVO FUNDO) */
+        .hero {
+            /* Novo Fundo de Natal (Borda de Natal) */
+            background: url('https://img.freepik.com/psd-gratuitas/desenho-de-borda-de-natal_23-2150988597.jpg?semt=ais_se_enriched&w=740&q=80');
+            background-size: cover;
+            background-position: bottom center; /* Ajustado para focar na borda de Natal */
+            text-align: center;
+            padding: 40px 20px 80px; 
+            margin-bottom: 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* Estilo do Logo dentro do Hero */
+        .hero-logo {
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-red); /* Cor Vermelha de Natal para o título */
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8); /* Sombra branca para leitura fácil */
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--primary-green); /* Cor Verde de Natal para a descrição */
+            font-weight: bold;
+        }
+
+        .btn-cta {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--primary-red);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Categorias */
+        .category-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            color: var(--primary-red);
+            font-size: 2rem;
+            position: relative;
+        }
+        
+        /* Grid de Produtos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* Card do Produto */
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px; 
+            object-fit: cover;
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+        /* Ajuste para a Caixa Barra (Lembrancinhas - último grid) */
+        .products-grid:last-child .product-image {
+            height: 350px; 
+            object-fit: contain; 
+            background-color: white; 
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+
+        .btn-buy {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #25D366; /* WhatsApp Green */
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-buy:hover {
+            background-color: #128C7E;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-red);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        
+        /* Estilos do Modal (Pop-up) */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            padding-top: 60px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%;
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh; 
+            object-fit: contain; 
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Amô <span>Cestas Personalizadas</span></h1>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <img src="logo.png" alt="Logo Amô | Cestas Personalizadas" class="hero-logo" onerror="this.style.display='none'">
+            
+            <h2>Natal Mágico 2025</h2>
+            <p>Presentes feitos com amor para quem você ama.</p>
+            
+            <a href="#catalogo" class="btn-cta">Ver Produtos</a>
+        </div>
+    </section>
+
+    <div class="container" id="catalogo">
+
+        <h3 class="category-title">🎄 Box Natalinas</h3>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="foto5.jpg" alt="Box Natalina Verde" class="product-image" onclick="openModal('foto5.jpg')" onerror="this.src='https://via.placeholder.com/300?text=Foto+do+Produto'">
+                <div class="product-info">
+                    <h3 class="product-title">Box Natalina Verde</h3>
+                    <p class="product-desc">Inclui Pelúcia de Neve, Café Starbucks Vidro, Chocolates Trento e Snacks. Embalagem rígida decorada.</p>
+                    <div class="product-price">R$ 94,90</div>
+                    <button class="btn-buy" onclick="enviarZap('Box Natalina Verde', '94,90')">🎁 Pedir no WhatsApp</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="foto6.jpg" alt="Box Natalina Vermelha" class="product-image" onclick="openModal('foto6.jpg')" onerror="this.src='https://via.placeholder.com/300?text=Foto+do+Produto'">
+                <div class="product-info">
+                    <h3 class="product-title">Box Natalina Vermelha</h3>
+                    <p class="product-desc">Inclui Pelúcia de Reninha, Cappuccino, Wafers e Petiscos. Caixa rígida decorada Vila de Natal.</p>
+                    <div class="product-price">R$ 94,90</div>
+                    <button class="btn-buy" onclick="enviarZap('Box Natalina Vermelha', '94,90')">🎁 Pedir no WhatsApp</button>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="category-title">☕ Caixas Envelope</h3>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="foto3.jpg" alt="Envelope 01 Merry Christmas" class="product-image" onclick="openModal('foto3.jpg')" onerror="this.src='https://via.placeholder.com/300?text=Foto+do+Produto'">
+                <div class="product-info">
+                    <h3 class="product-title">Env. 01: Merry Christmas</h3>
+                    <p class="product-desc">Nescafé Cappuccino, Snack Crocantíssimo, Bib's e Petisco. Envelope decorado com Renas.</p>
+                    <div class="product-price">R$ 74,90</div>
+                    <button class="btn-buy" onclick="enviarZap('Envelope 01 Merry Christmas', '74,90')">🎁 Pedir no WhatsApp</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="foto1.jpg" alt="Envelope 02 Brilho do Noel" class="product-image" onclick="openModal('foto1.jpg')" onerror="this.src='https://via.placeholder.com/300?text=Foto+do+Produto'">
+                <div class="product-info">
+                    <h3 class="product-title">Env. 02: Brilho do Noel</h3>
+                    <p class="product-desc">Café Starbucks, Crocantíssimo, Trento e Petisco. Envelope tema Caminhão do Noel.</p>
+                    <div class="product-price">R$ 74,90</div>
+                    <button class="btn-buy" onclick="enviarZap('Envelope 02 Brilho do Noel', '74,90')">🎁 Pedir no WhatsApp</button>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="category-title">🍸 Kits Gin & Drinks</h3>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="foto4.jpg" alt="Envelope 03 Merry Gin" class="product-image" onclick="openModal('foto4.jpg')" onerror="this.src='https://via.placeholder.com/300?text=Foto+do+Produto'">
+                <div class="product-info">
+                    <h3 class="product-title">Env. 03: Merry Gin</h3>
+                    <p class="product-desc">Tanqueray Gin, Easy Drinks Frutas Vermelhas, Tônica FYS e Petisco. Envelope Bege.</p>
+                    <div class="product-price">R$ 129,90</div>
+                    <button class="btn-buy" onclick="enviarZap('Envelope 03 Merry Gin', '129,90')">🎁 Pedir no WhatsApp</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="foto7.jpg" alt="Envelope 04 Gin do Noel" class="product-image" onclick="openModal('foto7.jpg')" onerror="this.src='https://via.placeholder.com/300?text=Foto+do+Produto'">
+                <div class="product-info">
+                    <h3 class="product-title">Env. 04: Gin do Noel</h3>
+                    <p class="product-desc">Tanqueray Gin, Easy Drinks Frutas Vermelhas, Tônica FYS e Petisco. Envelope Verde.</p>
+                    <div class="product-price">R$ 129,90</div>
+                    <button class="btn-buy" onclick="enviarZap('Envelope 04 Gin do Noel', '129,90')">🎁 Pedir no WhatsApp</button>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="category-title">🍫 Lembrancinhas</h3>
+        <div class="products-grid">
+             <div class="product-card">
+                <img src="foto2.jpg" alt="Caixa Barra" class="product-image" onclick="openModal('foto2.jpg')" onerror="this.src='https://via.placeholder.com/300?text=Foto+do+Produto'">
+                <div class="product-info">
+                    <h3 class="product-title">Caixa Barra Tradição</h3>
+                    <p class="product-desc">Barra de chocolate (Milka, Neugebauer ou Nestlé) em luva personalizada com "De/Para".</p>
+                    <div class="product-price">R$ 34,90</div>
+                    <button class="btn-buy" onclick="enviarZap('Caixa Barra Tradição', '34,90')">🎁 Pedir no WhatsApp</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Amô | Cestas Personalizadas. Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="imageModal" class="modal" onclick="closeModal(event)">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Função para abrir o pop-up (modal) da imagem
+        function openModal(imageSource) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            
+            modal.style.display = "block";
+            modalImg.src = imageSource;
+        }
+
+        // Função para fechar o pop-up (modal)
+        function closeModal(event) {
+            const modal = document.getElementById("imageModal");
+            // Fecha o modal se clicar no X ou na área escura (modal)
+            if (event.target === modal || event.target.className === 'close') {
+                modal.style.display = "none";
+            }
+        }
+        
+        // Função para enviar mensagem via WhatsApp
+        function enviarZap(produto, valor) {
+            // --- CONFIGURAÇÃO: SEU NÚMERO DE WHATSAPP BUSINESS ---
+            // Formato: 55 + DDD + Número.
+            const numeroTelefone = "5548996984746"; 
+            
+            const mensagem = `Olá! Gostaria de encomendar o produto: *${produto}* no valor de R$ ${valor}.`;
+            const url = `https://wa.me/${numeroTelefone}?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+
+</body>
+</html>
