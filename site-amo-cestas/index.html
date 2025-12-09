@@ -382,8 +382,53 @@
         }
     </script>
 
+    <a href="https://wa.me/5548996984746?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20ou%20tirar%20uma%20dúvida%20sobre%20os%20produtos%20de%20Natal." target="_blank" class="whatsapp-fixed">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#ffffff" d="M380.9 97.1C339.4 55.6 283.3 32 223.9 32c-122.4 0-221.7 99.3-221.7 221.7 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.7 17.8 69.3 27 107.2 27h.1c122.3 0 221.6-99.3 221.6-221.7 0-59.5-23.4-115.6-64-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L114 362.4l-5.5-3.3c-24.9-15.3-46.1-36.6-61.1-61.7-19.1-25.2-30-54.8-30-85.4 0-84.4 68.8-153.2 153.2-153.2 45.4 0 88.7 19.3 119.5 50.1 30.9 30.9 50.2 74.3 50.2 119.7 0 84.4-68.8 153.2-153.2 153.2zm144.3-102.6c-7.3-3.7-43.9-21.6-50.6-24.1-6.7-2.5-11.5-3.7-16.3 3.7-4.7 7.3-18.7 24.1-22.9 28.9-4.2 4.7-8.4 5.3-15.9 1.6s-31.6-11.7-60.3-37.3s-46.8-59.6-52-68.2c-5.3-8.4-.6-12.9 3.7-16.3 6.7-6.7 14.8-15.3 22.3-23.9 6.7-7.3 9.7-12.9 14.8-21.5 5.3-8.4 2.6-15.9-1.3-22.1s-16.3-38.6-22.3-52.9c-6-14.3-12-12.4-16.3-12.4-4.2 0-9 0-13.7 0s-12.4 1.8-18.9 9.3c-6.7 7.3-25 24.1-25 58.3s25.7 67.8 29.3 72.5c3.7 4.7 49.3 75.3 120.9 105.7 35.8 14.8 64.9 23.8 86.3 30.7 22.8 7.3 43.3 6.2 59.2 3.7 17.5-2.5 43.9-18 50.1-35.1 6.3-17 6.3-31.1 4.4-34.9s-6.7-5.7-13.3-9.3z"/></svg>
+    </a>
+    ```
+
+> **Atenção:** Eu já configurei o link de WhatsApp para o número que você forneceu no `index.html` (`5548996984746`). O texto já está preenchido: `Olá! Gostaria de fazer um pedido ou tirar uma dúvida sobre os produtos de Natal.`.
+
+### Passo 2: Adicionar o CSS (O Estilo Fixo)
+
+Você precisa adicionar o estilo para que o botão fique verde e fixo na tela.
+
+1.  Ainda no `index.html`, vá para a seção `<style>...</style>` (no início do arquivo, dentro do `<head>`).
+2.  Adicione o código CSS abaixo **no final da seção `<style>`**, logo antes da tag `</style>`:
+
+```css
+        /* Estilos do Botão WhatsApp Fixo */
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 20px; /* Distância da parte inferior da tela */
+            right: 20px;  /* Distância do lado direito da tela */
+            background-color: #25D366; /* Verde WhatsApp */
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* Garante que fique acima de tudo */
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-fixed:hover {
+            transform: scale(1.1); /* Efeito ao passar o mouse */
+            background-color: #128C7E;
+        }
+
+        .whatsapp-fixed svg {
+            width: 30px; /* Tamanho do ícone do WhatsApp */
+            height: 30px;
+        }
+    
 </body>
 
 </html>
+
 
 
