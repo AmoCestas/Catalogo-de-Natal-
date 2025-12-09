@@ -381,49 +381,11 @@
             window.open(url, '_blank');
         }
     </script>
-<a href="https://wa.me/5548996984746?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido%20ou%20tirar%20uma%20dúvida%20sobre%20os%20produtos%20de%20Natal." target="_blank" class="whatsapp-fixed">
-        W
-    </a>
-    ```
-
-> **Nota:** Para evitar o erro do ícone SVG, usamos a letra "W" temporariamente. Depois que o Netlify funcionar, podemos tentar adicionar um ícone de imagem simples (PNG) em vez do código SVG complexo.
-
-### Passo 2: Adicionar o CSS (O Estilo Fixo)
-
-Você precisa adicionar o estilo na seção `<style>...</style>` (no início do arquivo, dentro do `<head>`).
-
-1.  **Remova o CSS anterior:** Se você inseriu o CSS do WhatsApp na seção `<style>`, procure e **delete** o bloco inteiro que começa com `/* Estilos do Botão WhatsApp Fixo */`.
-2.  **Adicione o Novo CSS:** Adicione o código CSS abaixo **no final da seção `<style>`**, logo antes da tag `</style>`:
-
-```css
-        /* Estilos do Botão WhatsApp Fixo SIMPLIFICADO */
-        .whatsapp-fixed {
-            position: fixed;
-            bottom: 25px; /* Distância da parte inferior da tela */
-            right: 25px;  /* Distância do lado direito da tela */
-            background-color: #25D366; /* Verde WhatsApp */
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
-            border-radius: 50%;
-            width: 55px;
-            height: 55px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            z-index: 1000; 
-            transition: transform 0.3s ease;
-        }
-
-        .whatsapp-fixed:hover {
-            transform: scale(1.1); 
-            background-color: #128C7E;
-        }    
+  
 </body>
 
 </html>
+
 
 
 
